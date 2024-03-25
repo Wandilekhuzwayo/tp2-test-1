@@ -1,0 +1,74 @@
+def register_party(parties, new_party):
+    
+
+    acceptable_member_counts = {
+        "ASC": range(0, 1000), 
+        "ATM": range(0, 1000),
+        "AASD": range(0, 1000), 
+        "ANC": range(0, 1000),  
+        "AGANG_SA": range(0, 1000), 
+        "ALJAMA": range(0, 1000),
+        "ATA": range(0, 1000), 
+        "AZAPO": range(0, 1000),
+        "APC": range(0, 1000), 
+        "BRA": range(0, 1000),
+        "BLF": range(0, 1000), 
+        "ZACP": range(0, 1000),
+        "CPM": range(0, 1000), 
+        "CSA": range(0, 1000),
+        "COPE": range(0, 1000), 
+        "DA": range(0, 1000),
+        "DLC": range(0, 1000), 
+        "ECOFORUM": range(0, 1000),
+        "EFF": range(0, 1000), 
+        "F4SD": range(0, 1000),
+        "FREE_DEMS": range(0, 1000)
+    }
+
+    if "party_name" not in new_party or "reg_number" not in new_party or "member_count" not in new_party:
+        print("Error: The new party data is incomplete.")
+        return False
+
+    party_name = new_party["party_name"]
+    if party_name in acceptable_member_counts:
+        min_count, max_count = acceptable_member_counts[party_name].start, acceptable_member_counts[party_name].stop
+        member_count = new_party["member_count"]
+        if min_count <= member_count <= max_count:
+            print("Party registered successfully!")
+            parties.append(new_party)
+            return True
+        else:
+            print(f"Error: The member count ({member_count}) for {party_name} is not within the acceptable range ({min_count}-{max_count}).")
+            return False
+    else:
+        print(f"Error: Unknown party name '{party_name}'.")
+        return False
+
+parties = [
+    {"party_name": "ASC", "reg_number": 1, "member_count": 80},
+    {"party_name": "ATM", "reg_number": 2, "member_count": 45}
+    {"party_name": "AASD", "reg_number": 3, "member_count": 80},
+    {"party_name": "ANC", "reg_number": 4, "member_count": 45}
+    {"party_name": "AGANG_SA", "reg_number": 5, "member_count": 80},
+    {"party_name": "ALJAMA", "reg_number": 6, "member_count": 45}
+    {"party_name": "ATA", "reg_number": 7, "member_count": 80},
+    {"party_name": "AZAPO", "reg_number": 8, "member_count": 45}
+    {"party_name": "APC", "reg_number": 9, "member_count": 80},
+    {"party_name": "BRA", "reg_number": 10, "member_count": 45}
+    {"party_name": "BLF", "reg_number": 11, "member_count": 80},
+    {"party_name": "ZACP", "reg_number": 12, "member_count": 45}
+    {"party_name": "CPM", "reg_number": 13, "member_count": 80},
+    {"party_name": "CSA", "reg_number": 14, "member_count": 45}
+    {"party_name": "COPE", "reg_number": 15, "member_count": 80},
+    {"party_name": "DA", "reg_number": 16, "member_count": 45}
+    {"party_name": "DLC", "reg_number": 17, "member_count": 80},
+    {"party_name": "ECOFORUM", "reg_number": 19, "member_count": 45}
+    {"party_name": "EFF", "reg_number": 20, "member_count": 45}
+    {"party_name": "F4SD", "reg_number": 21, "member_count": 45}
+    {"party_name": "FREE_DEMS", "reg_number": 22, "member_count": 45}
+]
+
+new_party = {"party_name": "PartyC", "reg_number": "PC001", "member_count": 25}
+
+register_party(parties, new_party)  
+
